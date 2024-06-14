@@ -1,0 +1,32 @@
+type Query {
+  albums(titleFilter: String): [Album!]!
+  album(id: ID!): Album
+}
+
+type Mutation {
+  createAlbum(input: CreateAlbumInput!): Album!
+  updateAlbum(input: UpdateAlbumInput!): Album!
+  deleteAlbum(id: ID!): DeleteAlbumPayload!
+}
+
+input CreateAlbumInput {
+  title: String!
+  artist: String
+}
+
+input UpdateAlbumInput {
+  id: ID!
+  title: String
+  artist: String
+}
+
+type DeleteAlbumPayload {
+  deletedAlbumId: ID
+  success: Boolean!
+}
+
+type Album {
+  id: ID!
+  title: String!
+  artist: String
+}
