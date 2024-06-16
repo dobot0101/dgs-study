@@ -22,9 +22,8 @@ public class AlbumMutationResolver {
   // 아래와 같이 dgs generator가 생성한 CreateAlbumInput을 사용해도 되고, 직접 DTO를 만들어서 사용해도 된다.
   // (직접 만든 DTO의 이름이 graphql 스키마의 input 이름과 달라도 됨. 다만 필드 이름은 같아야 함)
   // 하지만 직접 만든 DTO가 record이면 안된다.
-  // public Album createAlbum(@InputArgument
-  // com.dobot.dgs_study.types.CreateAlbumInput input) {
-  public Album createAlbum(@InputArgument CreateAlbumRequestDto input) {
+  public Album createAlbum(@InputArgument com.dobot.dgs_study.types.CreateAlbumInput input) {
+    // public Album createAlbum(@InputArgument CreateAlbumRequestDto input) {
     var album = Album.builder().artist(input.getArtist()).title(input.getTitle()).id(UUID.randomUUID()).build();
     return albumRepository.save(album);
   }
